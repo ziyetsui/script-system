@@ -26,7 +26,7 @@
 
 | 手上有什么 | 用哪个入口 | 这轮由编剧决定什么 |
 | --- | --- | --- |
-| 想先试一句 | [三句入门问法](roadmap.md#section-beginner) | 要几路试写、点名改稿，还是借作品找动作 |
+| 想先试一句 | [三句入门问法](roadmap.md#section-beginner) | 用 `/热点` 找选题、用 `/群策` 选故事，或用「用剧本系统skill」改一场戏 |
 | 想照着走一遍 | [《纸窗内外》四轮实例](roadmap.md#section-example) | 哪条线头值得追，哪段动机要重写 |
 | 只有主题或生活点子 | [选高潮](roadmap.md#section-choice) → [写大纲](roadmap.md#section-outline) | 跟谁看，最后谁行动，舍掉什么 |
 | 两场之间接不上 | [找梗及岗位交接](roadmap.md#section-roles) | 留下哪个会逼出下一场的动作 |
