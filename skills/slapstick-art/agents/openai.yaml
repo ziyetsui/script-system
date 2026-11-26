@@ -1,0 +1,4 @@
+interface:
+  display_name: "Slapstick Art"
+  short_description: "Original slapstick cartoon art"
+  default_prompt: "Use $slapstick-art to create an original cat-and-mouse illustration that clearly avoids Tom and Jerry while showing a Redis cache hit before the database."

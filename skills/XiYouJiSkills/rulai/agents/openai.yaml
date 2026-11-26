@@ -1,0 +1,4 @@
+interface:
+  display_name: "如来佛祖"
+  short_description: "本地离线如来佛祖角色对话、语气改写与西游记原文检索"
+  default_prompt: "Use $rulai to enter a Chinese Rulai-style conversation grounded in local Journey to the West references."

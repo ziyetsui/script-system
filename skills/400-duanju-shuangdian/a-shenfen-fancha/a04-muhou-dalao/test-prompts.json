@@ -1,0 +1,52 @@
+{
+  "skill": "muhou-dalao",
+  "version": "0.1.0",
+  "source_book": "《400 个爆款短剧剧本爽点》 — 佚名",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "主角是隐退的宗师，教出的三个徒弟都成了大佬，世人却嘲笑他，怎么安排徒弟当众认主？",
+      "expected_behavior": "激活 muhou-dalao，设计世人嘲笑基准 + 当众认主瞬间",
+      "notes": "典型幕后大佬场景"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "怎么写'主角不出手也有排面'的戏？他教出来的人都很厉害。",
+      "expected_behavior": "激活 muhou-dalao，用培养关系证明主角地位",
+      "notes": "地位型爽点需求"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "我想写一个桥段：徒弟在外嚣张，他师傅见到主角却毕恭毕敬。",
+      "expected_behavior": "激活 muhou-dalao，用辈分链（徒弟狂→师傅怕→主角更高）制造反差",
+      "notes": "徒弟狂妄师傅敬畏"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "主角亲自上场比武，一拳打飞对手，全场欢呼。",
+      "expected_behavior": "不应激活本 skill，主角亲自出手属 b01/b03 类战斗爽点",
+      "notes": "诱饵: 亲自战斗场景"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "给主角设计身份：他同时是战神、医圣、黑客之王，别人都不知道。",
+      "expected_behavior": "不应激活本 skill，应激活 a03-duochong-majia（多重马甲）",
+      "notes": "跨 skill 混淆诱饵: 同书兄弟 skill"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "徒弟认主时主角要不要出手教训嘲笑者？",
+      "expected_behavior": "合理判断: 建议主角保持淡定不出手（维持幕后人设），由徒弟代劳；除非剧情需要主角立威",
+      "notes": "边界: 主角姿态选择"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少 3 条 should_trigger + 2 条 should_not_trigger + 1 条 edge_case。全部 should_not_trigger 必须通过，且其中至少 1 条是同书兄弟 skill 的场景。"
+}

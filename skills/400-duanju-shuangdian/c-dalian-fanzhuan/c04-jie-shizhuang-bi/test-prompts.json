@@ -1,0 +1,52 @@
+{
+  "skill": "jie-shizhuang-bi",
+  "version": "0.1.0",
+  "source_book": "《400 个爆款短剧剧本爽点》 — 佚名",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "写一个桥段：反派借某个大佬的名号到处欺压人，结果真主到场当场戳穿。",
+      "expected_behavior": "激活 jie-shizhuang-bi，按演足假资本 → 真主到场 → 逐条对质设计",
+      "notes": "典型借势装 X"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "怎么安排'冒名顶替的假神医被当众验穿'的戏？",
+      "expected_behavior": "激活 jie-shizhuang-bi，用权威验真手段（真身/鉴定/对质）戳穿",
+      "notes": "冒名验穿"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "反派狐假虎威欺负主角，怎么让他自取其辱？",
+      "expected_behavior": "激活 jie-shizhuang-bi，设计假资本崩塌 + 当众社死",
+      "notes": "狐假虎威清算"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "富二代炫真富（他真有那么多钱）被主角用更高的资本碾压。",
+      "expected_behavior": "不应激活本 skill（资本为真），应激活 c03-xuanfu-bei-nianya（炫富被碾压）",
+      "notes": "跨 skill 混淆诱饵: 同书兄弟 skill"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "主角故意放出风声让对手误以为他背后有大势力，对手吓得退兵。",
+      "expected_behavior": "不应激活本 skill（主角主动策略），应激活 b04-xuzhang-shengshi（虚张声势）",
+      "notes": "诱饵: 主动虚张声势"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "装 X 者被戳穿后怎么收场？直接社死会不会太狠？",
+      "expected_behavior": "合理判断: 按剧风定——喜剧向轻处理（社死+收编为丑角），正剧向追责（赔偿/法律/身败名裂）；留后续剧情口子即可",
+      "notes": "边界: 戳穿后果的分寸"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少 3 条 should_trigger + 2 条 should_not_trigger + 1 条 edge_case。全部 should_not_trigger 必须通过，且其中至少 1 条是同书兄弟 skill 的场景。"
+}

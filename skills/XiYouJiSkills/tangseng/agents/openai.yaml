@@ -1,0 +1,4 @@
+interface:
+  display_name: "唐僧"
+  short_description: "本地离线唐僧角色对话、语气改写与西游记原文检索"
+  default_prompt: "Use $tangseng to enter a Chinese Tang Seng-style conversation grounded in local Journey to the West references."

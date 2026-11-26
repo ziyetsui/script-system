@@ -1,0 +1,52 @@
+{
+  "skill": "weifu-bei-diaonan",
+  "version": "0.1.0",
+  "source_book": "《400 个爆款短剧剧本爽点》 — 佚名",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "写个桥段：主角微服去酒店，被前台看不起还被保安拦，最后身份揭晓全场傻眼。",
+      "expected_behavior": "激活 weifu-bei-diaonan，按前压后弹结构生成完整桥段",
+      "notes": "典型微服被刁难场景"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "怎么设计'有眼不识泰山'的打脸戏？要让读者憋气再释放。",
+      "expected_behavior": "激活 weifu-bei-diaonan，强调压足/弹快、信息差窗口、旁观者",
+      "notes": "点名有眼不识泰山"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "主角是隐藏大佬去面试，被 HR 羞辱，我要安排当众身份揭晓。",
+      "expected_behavior": "激活 weifu-bei-diaonan，将职场场景映射为刁难+揭晓结构",
+      "notes": "现代题材迁移"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "全公司都知道主角是总裁，他正常上班开会，没人刁难他。",
+      "expected_behavior": "不应激活本 skill，身份已公开且无刁难，无打脸结构",
+      "notes": "诱饵: 无信息差场景"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "写一段：主角被家族里的人当众羞辱是废物，他当场亮出顶级实力反打脸。",
+      "expected_behavior": "不应激活本 skill，应激活 c01-jiazufan-dalian（家族嘲讽反打脸）",
+      "notes": "跨 skill 混淆诱饵: 同书兄弟 skill"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "主角被刁难但不想立刻亮身份，这段'憋屈'戏可以写多长？",
+      "expected_behavior": "合理判断: 激活本 skill 但提示憋屈长度受限（短剧单集压 ≤ 前半段），过长主角显窝囊，可穿插主角内心/小动作保持张力",
+      "notes": "边界: 压的时长控制"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少 3 条 should_trigger + 2 条 should_not_trigger + 1 条 edge_case。全部 should_not_trigger 必须通过，且其中至少 1 条是同书兄弟 skill 的场景。"
+}

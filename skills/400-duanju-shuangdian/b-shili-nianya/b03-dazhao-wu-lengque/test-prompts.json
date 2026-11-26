@@ -1,0 +1,52 @@
+{
+  "skill": "dazhao-wu-lengque",
+  "version": "0.1.0",
+  "source_book": "《400 个爆款短剧剧本爽点》 — 佚名",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "写一场战斗：反派按大招有冷却算计主角，结果主角大招无限放。",
+      "expected_behavior": "激活 dazhao-wu-lengque，设计反派算计 → 机制反常规 → 认知崩塌",
+      "notes": "典型大招无冷却场景"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "怎么让'智者型反派'的预判被主角碾碎？",
+      "expected_behavior": "激活 dazhao-wu-lengque，用反常规机制击穿反派的规则计算",
+      "notes": "智者反派崩溃"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "主角的技能机制特殊（无消耗连发），怎么设计第一次震惊全场的战斗？",
+      "expected_behavior": "激活 dazhao-wu-lengque，给出机制来源 + 常规规则铺垫 + 反常规爆发",
+      "notes": "机制型金手指展现"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "主角故意放出假消息让对手以为他很强，对手吓得退兵，兵不血刃。",
+      "expected_behavior": "不应激活本 skill，应激活 b04-xuzhang-shengshi（虚张声势）",
+      "notes": "跨 skill 混淆诱饵: 同书兄弟 skill"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "写一场纯拼力气的战斗：主角一拳一拳把对手打趴，没有技能设定。",
+      "expected_behavior": "不应激活本 skill，无机制设定的战斗",
+      "notes": "诱饵: 无机制世界观"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "大招无冷却会不会让主角无敌、剧情没法紧张了？",
+      "expected_behavior": "合理判断: 提示给机制设边界（触发条件/代价/克星/隐藏机制信息），并作为底牌限量使用，日常战斗回归常规",
+      "notes": "边界: 机制的可持续性"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少 3 条 should_trigger + 2 条 should_not_trigger + 1 条 edge_case。全部 should_not_trigger 必须通过，且其中至少 1 条是同书兄弟 skill 的场景。"
+}

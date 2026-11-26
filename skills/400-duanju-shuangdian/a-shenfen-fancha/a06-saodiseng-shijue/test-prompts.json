@@ -1,0 +1,52 @@
+{
+  "skill": "saodiseng-shijue",
+  "version": "0.1.0",
+  "source_book": "《400 个爆款短剧剧本爽点》 — 佚名",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我想写一个扫地僧式角色：主角楼下捡垃圾的老头其实是隐退的武道宗师。",
+      "expected_behavior": "激活 saodiseng-shijue，设计卑微日常 + 关键时刻出手",
+      "notes": "典型扫地僧角色"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "怎么让'不起眼的快递员其实是顶级高手'的出场震撼？",
+      "expected_behavior": "激活 saodiseng-shijue，按职业反差 + 危急出手设计",
+      "notes": "职业反差场景"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "剧本需要一个深藏不露的隐藏高手配角，怎么设定最有效果？",
+      "expected_behavior": "激活 saodiseng-shijue，给出隐藏理由 + 铺垫 + 出手时机建议",
+      "notes": "隐藏高手人设需求"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "主角越级挑战比自己强一个大境界的对手，战斗中绝境反杀。",
+      "expected_behavior": "不应激活本 skill，这是主角战斗戏，应激活 b01-yueji-fansha",
+      "notes": "诱饵: 战斗类场景"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "主角是隐藏大佬，全城最强的武道宗师见到他都要鞠躬，怎么写这个反差？",
+      "expected_behavior": "不应激活本 skill，应激活 a01-darenwu-fushou（大人物俯首）",
+      "notes": "跨 skill 混淆诱饵: 同书兄弟 skill"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "隐藏高手已经当众出手过一次，后面他还能继续隐藏吗？",
+      "expected_behavior": "合理判断: 出手后身份暴露需处理后果——要么快速离场遮掩、要么让主角帮忙保密、要么接受身份公开并转型，不能强行维持隐藏",
+      "notes": "边界: 出手后身份暴露"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少 3 条 should_trigger + 2 条 should_not_trigger + 1 条 edge_case。全部 should_not_trigger 必须通过，且其中至少 1 条是同书兄弟 skill 的场景。"
+}

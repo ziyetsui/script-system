@@ -1,0 +1,52 @@
+{
+  "skill": "jinzhishou-ziyuan",
+  "version": "0.1.0",
+  "source_book": "《400 个爆款短剧剧本爽点》 — 佚名",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "给主角设计一套金手指体系，他有天赋、功法和靠山，怎么安排资源碾压的戏？",
+      "expected_behavior": "激活 jinzhishou-ziyuan，设计资源体系 + 降维打击场景 + 代价边界",
+      "notes": "典型金手指设定"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "怎么写'主角把珍贵宝物当白菜送人'的桥段？",
+      "expected_behavior": "激活 jinzhishou-ziyuan，用态度碾压（不在意）彰显资源实力",
+      "notes": "宝物随便送"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "主角是废柴体质，怎么写他靠特殊资源修复弱点逆袭？",
+      "expected_behavior": "激活 jinzhishou-ziyuan，按被嘲笑（压）→修复（弹）→打脸设计成长弧线",
+      "notes": "弱点修复变体"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "主角的系统只提供虚假身份面板，唬人用的，实际没什么实力。",
+      "expected_behavior": "不应激活本 skill（伪装向），应激活 d04-xitong-weizhuang（系统加持伪装实力）",
+      "notes": "跨 skill 混淆诱饵: 同书兄弟 skill"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "主角的破碗其实是空间神器，识货宗师一眼认出价值连城。",
+      "expected_behavior": "不应激活本 skill（单件物件反差），应激活 a07-wujian-waimao-fancha",
+      "notes": "诱饵: 物件反差"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "金手指太多太强，主角无敌了，剧情还有冲突吗？",
+      "expected_behavior": "合理判断: 停止加资源，改为'资源引祸'（觊觎者/夺宝者/规则限制），或升级对手维度（规则/情感/权谋冲突）",
+      "notes": "边界: 金手指强度控制"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少 3 条 should_trigger + 2 条 should_not_trigger + 1 条 edge_case。全部 should_not_trigger 必须通过，且其中至少 1 条是同书兄弟 skill 的场景。"
+}

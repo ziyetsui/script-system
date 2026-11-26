@@ -1,0 +1,52 @@
+{
+  "skill": "shuangdian-jiaoyan",
+  "version": "0.1.0",
+  "source_book": "《400 个爆款短剧剧本爽点》 — 佚名",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我写完了一部 40 集短剧剧本，帮我检查爽点分布和哪里不够爽。",
+      "expected_behavior": "激活 shuangdian-jiaoyan，按分集打标 → 统计分布 → 多维查漏 → 雷区排查 → 输出报告",
+      "notes": "典型剧本校验场景"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "编辑说我剧本爽点太单一，帮我看看缺什么维度。",
+      "expected_behavior": "激活 shuangdian-jiaoyan，按五维（打架打脸/物质/地位/崇拜/感情）查漏",
+      "notes": "爽点维度评估"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "帮我排查剧本里有没有降智桥段，配角行为合不合理。",
+      "expected_behavior": "激活 shuangdian-jiaoyan，按反降智原则逐场检查配角信息量与立场",
+      "notes": "雷区排查"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "给我写一个'嚣张转谄媚'的桥段模板，反派上门求饶那种。",
+      "expected_behavior": "不应激活本 skill（生成需求），应激活 c02-xiaozhang-zhuan-xianmei（嚣张转谄媚）",
+      "notes": "跨 skill 混淆诱饵: 同书兄弟 skill（生成 vs 校验分界）"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "怎么用信息差设计一个反转？反派搬出靠山结果靠山刚被主角击败。",
+      "expected_behavior": "不应激活本 skill（单个手法生成），应激活 d03-xinxi-cha（信息差）",
+      "notes": "诱饵: 单手法生成"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "剧本是长剧不是短剧，爽点密度标准还一样吗？",
+      "expected_behavior": "合理判断: 提示按载体调整——短剧单集 3 分钟内需爆点，长剧/精品网文可放宽密度、更重人物与情绪节奏；校验报告应注明载体假设",
+      "notes": "边界: 载体差异"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少 3 条 should_trigger + 2 条 should_not_trigger + 1 条 edge_case。全部 should_not_trigger 必须通过，且其中至少 1 条是同书兄弟 skill 的场景。"
+}

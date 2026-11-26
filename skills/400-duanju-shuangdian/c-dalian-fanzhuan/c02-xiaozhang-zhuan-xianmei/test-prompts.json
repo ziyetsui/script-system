@@ -1,0 +1,52 @@
+{
+  "skill": "xiaozhang-zhuan-xianmei",
+  "version": "0.1.0",
+  "source_book": "《400 个爆款短剧剧本爽点》 — 佚名",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "写一个桥段：小反派嚣张上门要打主角，知道主角身份后当场跪求。",
+      "expected_behavior": "激活 xiaozhang-zhuan-xianmei，按嚣张表演 → 信息引爆 → 剧烈变脸设计",
+      "notes": "典型嚣张转谄媚"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "怎么让'狗眼看人低'的配角被打脸到求饶？",
+      "expected_behavior": "激活 xiaozhang-zhuan-xianmei，设计嚣张资本 + 当众变脸 + 主角处置",
+      "notes": "狗眼看人低"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "我想写一个'刚才还狂得要命，现在跪地叫爷爷'的反差戏。",
+      "expected_behavior": "激活 xiaozhang-zhuan-xianmei，生成态度 180° 反转的完整桥段",
+      "notes": "变脸喜剧向"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "配角借用别人的名头到处装 X，结果正主来了当场戳穿。",
+      "expected_behavior": "不应激活本 skill（虚假资本），应激活 c04-jie-shizhuang-bi（借势装 X 自取其辱）",
+      "notes": "跨 skill 混淆诱饵: 同书兄弟 skill"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "主角去酒店被前台看不起还被保安拦，最后身份揭晓全场傻眼。",
+      "expected_behavior": "不应激活本 skill（陌生人信息差），应激活 a02-weifu-bei-diaonan（微服被刁难）",
+      "notes": "诱饵: 陌生人刁难"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "配角变脸后主角应该原谅他还是教训他？",
+      "expected_behavior": "合理判断: 按人物与剧风定——彻底喜剧可轻饶+收编（变喜剧跟班），解气向可教训+记仇；留后续剧情口子即可",
+      "notes": "边界: 处置方式"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少 3 条 should_trigger + 2 条 should_not_trigger + 1 条 edge_case。全部 should_not_trigger 必须通过，且其中至少 1 条是同书兄弟 skill 的场景。"
+}

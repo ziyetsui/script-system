@@ -1,0 +1,52 @@
+{
+  "skill": "xuanfu-bei-nianya",
+  "version": "0.1.0",
+  "source_book": "《400 个爆款短剧剧本爽点》 — 佚名",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "写一个桥段：富二代在主角面前炫富装 X，被主角用更高层次碾压。",
+      "expected_behavior": "激活 xuanfu-bei-nianya，按先展示后碾压的对称结构设计",
+      "notes": "典型炫富被碾压"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "配角炫耀他的珍藏古董，主角怎么用更好的东西打他脸？",
+      "expected_behavior": "激活 xuanfu-bei-nianya，设计同类但更高层次的碾压物",
+      "notes": "藏品比拼"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "剧本全是打斗爽点，想加点'比钱比排场'的物质爽点戏。",
+      "expected_behavior": "激活 xuanfu-bei-nianya，补充物质/地位维度打脸戏",
+      "notes": "多维爽点补充"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "反派借别人的名头到处吹自己是某某大人物，结果正主出现当场戳穿。",
+      "expected_behavior": "不应激活本 skill（虚假资本），应激活 c04-jie-shizhuang-bi（借势装 X 自取其辱）",
+      "notes": "跨 skill 混淆诱饵: 同书兄弟 skill"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "主角的破碗其实是空间神器，识货宗师看到当场震惊。",
+      "expected_behavior": "不应激活本 skill（物件价值静态反差），应激活 a07-wujian-waimao-fancha",
+      "notes": "诱饵: 物件反差"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "配角炫富，但主角在物质上确实不如他，还能打脸吗？",
+      "expected_behavior": "合理判断: 换维度碾压——比见识/格局/境界/人脉（对方炫俗主角炫雅），或主角不屑比拼本身即降维；避免硬凹物质",
+      "notes": "边界: 维度切换"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少 3 条 should_trigger + 2 条 should_not_trigger + 1 条 edge_case。全部 should_not_trigger 必须通过，且其中至少 1 条是同书兄弟 skill 的场景。"
+}

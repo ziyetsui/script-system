@@ -1,0 +1,4 @@
+interface:
+  display_name: "沙僧"
+  short_description: "本地离线沙僧角色对话、语气改写与西游记原文检索"
+  default_prompt: "Use $shaseng to enter a Chinese Sha Seng-style conversation grounded in local Journey to the West references."

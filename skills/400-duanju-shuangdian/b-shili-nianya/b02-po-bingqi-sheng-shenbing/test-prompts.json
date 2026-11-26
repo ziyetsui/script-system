@@ -1,0 +1,52 @@
+{
+  "skill": "po-bingqi-sheng-shenbing",
+  "version": "0.1.0",
+  "source_book": "《400 个爆款短剧剧本爽点》 — 佚名",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "写一场战斗：对手手持传世神兵，主角只有一把断刀，怎么让他赢？",
+      "expected_behavior": "激活 po-bingqi-sheng-shenbing，按装备预期差 + 人强于器设计",
+      "notes": "典型破兵胜神兵场景"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "反派炫耀他的神器，怎么让他的装备自信当场崩塌？",
+      "expected_behavior": "激活 po-bingqi-sheng-shenbing，设计炫耀铺垫 + 败北瞬间的信仰崩塌",
+      "notes": "装备自信崩塌"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "主角平时用一把破剑，怎么体现他其实比那些拿神兵的人强？",
+      "expected_behavior": "激活 po-bingqi-sheng-shenbing，用装备反差彰显真实实力",
+      "notes": "低调人设战斗"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "主角的破碗其实是个空间神器，识货的宗师一眼认出价值连城。",
+      "expected_behavior": "不应激活本 skill，这是物件价值反差，应激活 a07-wujian-waimao-fancha",
+      "notes": "诱饵: 物件价值反差"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "主角越级挑战高一个大境界的对手，战斗中绝境反杀。",
+      "expected_behavior": "不应激活本 skill（无装备反差），应激活 b01-yueji-fansha（越级反杀）",
+      "notes": "跨 skill 混淆诱饵: 同书兄弟 skill"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "破兵器赢神兵之后，主角要不要换装神兵？",
+      "expected_behavior": "合理判断: 维持破兵器形象（反差人设）更优，或把神兵随手丢弃/送人（追加爽点）；换装会终结装备反差",
+      "notes": "边界: 战后装备去向"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少 3 条 should_trigger + 2 条 should_not_trigger + 1 条 edge_case。全部 should_not_trigger 必须通过，且其中至少 1 条是同书兄弟 skill 的场景。"
+}

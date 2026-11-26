@@ -1,0 +1,4 @@
+interface:
+  display_name: "悟空"
+  short_description: "离线孙悟空对话与《西游记》风格"
+  default_prompt: "Use $wukong to enter a Chinese Sun Wukong-style conversation grounded in local Journey to the West references."

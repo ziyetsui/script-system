@@ -1,0 +1,52 @@
+{
+  "skill": "gonglao-bei-qiang",
+  "version": "0.1.0",
+  "source_book": "《400 个爆款短剧剧本爽点》 — 佚名",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "同事冒领了主角的方案拿了奖，怎么安排真相大白让主角拿回一切？",
+      "expected_behavior": "激活 gonglao-bei-qiang，按抢功 → 风光蓄力 → 当众揭穿设计",
+      "notes": "典型功劳被抢"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "主角的成果被同门抢走还反咬他，怎么写延迟满足的打脸？",
+      "expected_behavior": "激活 gonglao-bei-qiang，设计憋屈蓄力 + 最得意场合清算",
+      "notes": "同门抢功"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "怎么设计'抢功者一路风光，最终身败名裂'的长线伏笔？",
+      "expected_behavior": "激活 gonglao-bei-qiang，安排抢功者风光戏蓄力 + 确凿证据收网",
+      "notes": "长线清算伏笔"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "反派借某大佬的名号吹自己是代言人，真主到场当场戳穿。",
+      "expected_behavior": "不应激活本 skill（虚荣吹嘘），应激活 c04-jie-shizhuang-bi（借势装 X 自取其辱）",
+      "notes": "跨 skill 混淆诱饵: 同书兄弟 skill"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "主角做方案被同事抢了，当场就把证据拍桌上对质，同事当场认错。",
+      "expected_behavior": "不应激活本 skill（即时对质，非延迟满足结构），可归当面对质类桥段",
+      "notes": "诱饵: 即时对质"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "真相大白后，主角应该原谅抢功者还是让他彻底身败名裂？",
+      "expected_behavior": "合理判断: 按剧风与人物设定定——喜剧向轻罚+给改过机会，解气向追责到底；可留'抢功者后续报复/悔改'的剧情口子",
+      "notes": "边界: 清算力度"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少 3 条 should_trigger + 2 条 should_not_trigger + 1 条 edge_case。全部 should_not_trigger 必须通过，且其中至少 1 条是同书兄弟 skill 的场景。"
+}

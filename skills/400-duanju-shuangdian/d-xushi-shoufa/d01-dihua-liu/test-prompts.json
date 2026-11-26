@@ -1,0 +1,52 @@
+{
+  "skill": "dihua-liu",
+  "version": "0.1.0",
+  "source_book": "《400 个爆款短剧剧本爽点》 — 佚名",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "写一个迪化流桥段：主角打了个哈欠，手下们疯狂脑补他在测试大家。",
+      "expected_behavior": "激活 dihua-liu，按普通行为 → 脑补钩子 → 具象化内心戏设计",
+      "notes": "典型迪化流场景"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "怎么让配角'自我攻略'，把主角的普通举动脑补成深不可测？",
+      "expected_behavior": "激活 dihua-liu，生成配角逐层分析内心戏 + 主角无辜反差",
+      "notes": "自我攻略"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "剧本需要喜剧+敬畏双效果的桥段，主角深藏不露。",
+      "expected_behavior": "激活 dihua-liu，用脑补让主角'什么都没做也显得很牛'",
+      "notes": "喜剧敬畏双效果"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "主角故意放出风声让对手误以为他背后有大势力，对手吓得退兵。",
+      "expected_behavior": "不应激活本 skill（主角主动误导），应激活 b04-xuzhang-shengshi（虚张声势）",
+      "notes": "跨 skill 混淆诱饵: 同书兄弟 skill"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "主角随手帮了个人，结果传言越滚越大，多方站队冲突升级，主角被迫应对。",
+      "expected_behavior": "不应激活本 skill（冲突向风波），应激活 c05-wuxin-zhi-ju-re-bo（无心之举引风波）",
+      "notes": "诱饵: 风波向误读"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "配角脑补出来的设定，和主角真实身份对不上怎么办？",
+      "expected_behavior": "合理判断: 可制造'脑补偏差'笑点（配角猜错了方向），或让脑补内容成为揭晓真实身份的伏笔（半真半假）；保持主角无辜",
+      "notes": "边界: 脑补与真相的关系"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少 3 条 should_trigger + 2 条 should_not_trigger + 1 条 edge_case。全部 should_not_trigger 必须通过，且其中至少 1 条是同书兄弟 skill 的场景。"
+}

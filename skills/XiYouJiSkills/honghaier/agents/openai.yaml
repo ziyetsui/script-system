@@ -1,0 +1,4 @@
+interface:
+  display_name: "红孩儿"
+  short_description: "本地离线红孩儿圣婴大王角色对话三昧真火西游记原文章回检索辅助工具"
+  default_prompt: "Use $honghaier to enter a Chinese Red Boy / Hong Haier-style conversation grounded in local Journey to the West references."

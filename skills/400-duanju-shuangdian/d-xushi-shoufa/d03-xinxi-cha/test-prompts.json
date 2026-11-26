@@ -1,0 +1,52 @@
+{
+  "skill": "xinxi-cha",
+  "version": "0.1.0",
+  "source_book": "《400 个爆款短剧剧本爽点》 — 佚名",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "怎么用信息差设计反转？比如反派搬出靠山，读者却知道靠山刚被主角击败。",
+      "expected_behavior": "激活 xinxi-cha，按错误认知公开表演 → 读者先确认新信息 → 撞上真相设计",
+      "notes": "典型信息差反转"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "我的桥段反转总靠巧合，怎么改成靠信息差驱动？",
+      "expected_behavior": "激活 xinxi-cha，检查反转是否由认知差异驱动，重构为信息差结构",
+      "notes": "反转质量校验"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "写一个'他不知道的是……'式的悬念钩子，跨题材都通用的。",
+      "expected_behavior": "激活 xinxi-cha，生成信息差冲突 + 上帝视角优越感钩子",
+      "notes": "通用冲突引擎"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "双方都知道对方实力，公平对弈，比谁技高一筹。",
+      "expected_behavior": "不应激活本 skill，信息对称的对等博弈无信息差可制造",
+      "notes": "诱饵: 信息对称"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "配角看到主角打哈欠，脑补他在布局惊天大计，越想越敬畏。",
+      "expected_behavior": "不应激活本 skill（脑补敬畏落点），应激活 d01-dihua-liu（迪化流）",
+      "notes": "跨 skill 混淆诱饵: 同书兄弟 skill"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "信息差如果让反派一直不知道真相，会不会显得主角胜之不武？",
+      "expected_behavior": "合理判断: 需要平衡——给信息差设代价（主角也有一刻不知道的事）或时限（真相迟早公开），并让反派有合理隔离理由，避免单方面碾压",
+      "notes": "边界: 信息差的平衡性"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少 3 条 should_trigger + 2 条 should_not_trigger + 1 条 edge_case。全部 should_not_trigger 必须通过，且其中至少 1 条是同书兄弟 skill 的场景。"
+}

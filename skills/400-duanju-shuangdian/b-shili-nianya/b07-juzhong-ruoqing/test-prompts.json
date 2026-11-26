@@ -1,0 +1,52 @@
+{
+  "skill": "juzhong-ruoqing",
+  "version": "0.1.0",
+  "source_book": "《400 个爆款短剧剧本爽点》 — 佚名",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "写一个桥段：全城名医都治不好的病，主角随手就治好了，怎么突出反差？",
+      "expected_behavior": "激活 juzhong-ruoqing，先写重（众人束手）再写轻（主角一笔带过）",
+      "notes": "典型举重若轻场景"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "主角怎么不动手就让手下死心塌地追随？",
+      "expected_behavior": "激活 juzhong-ruoqing，用善待手下（记住名字/分利/护短）收获敬畏拥护",
+      "notes": "驭下收获"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "剧本里主角每件事都费尽周折，太累了，怎么加一些'轻松搞定'的爽点？",
+      "expected_behavior": "激活 juzhong-ruoqing，补充效率反差节拍与难度参照系",
+      "notes": "节奏补充"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "主角被逼入绝境，所有人都以为他必死，他极限反杀成功。",
+      "expected_behavior": "不应激活本 skill（艰难胜利），应激活 b01-yueji-fansha（越级反杀）",
+      "notes": "跨 skill 混淆诱饵: 同书兄弟 skill"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "主角的手下主动替主角教训挑衅者，主角全程没动手。",
+      "expected_behavior": "不应激活本 skill（他人代劳），应激活 b06-peijue-hongtuo（配角烘托）",
+      "notes": "诱饵: 代劳型烘托"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "主角总是轻松搞定，读者会不会觉得没挑战、没意思？",
+      "expected_behavior": "合理判断: 与 b01 的艰难反杀交替使用形成'紧-松'节奏；并给'轻松'设条件（关键信息/资源/身份门槛），避免无脑",
+      "notes": "边界: 轻松与挑战的节奏"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少 3 条 should_trigger + 2 条 should_not_trigger + 1 条 edge_case。全部 should_not_trigger 必须通过，且其中至少 1 条是同书兄弟 skill 的场景。"
+}

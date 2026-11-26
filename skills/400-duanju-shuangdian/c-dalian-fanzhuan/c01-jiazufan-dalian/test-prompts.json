@@ -1,0 +1,52 @@
+{
+  "skill": "jiazufan-dalian",
+  "version": "0.1.0",
+  "source_book": "《400 个爆款短剧剧本爽点》 — 佚名",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "写族会戏：主角是家族弃子，被当众羞辱，怎么安排他亮出身份反打脸？",
+      "expected_behavior": "激活 jiazufan-dalian，按公开嘲讽 → 当众亮牌 → 系统性清算设计",
+      "notes": "典型家族反打脸"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "主角被家族夺走产业还退婚，怎么写他逆袭清算？",
+      "expected_behavior": "激活 jiazufan-dalian，用具体屈辱铺垫 + 证据确凿反打脸",
+      "notes": "弃子逆袭"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "家族内斗的打脸戏，怎么让每个嘲讽过主角的人都得到回应？",
+      "expected_behavior": "激活 jiazufan-dalian，系统性清算每个嘲讽者 + 主角掌握选择权",
+      "notes": "系统清算"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "主角在外面是战神，回家父母催婚嫌弃他，其实是爱他怕他走弯路。",
+      "expected_behavior": "不应激活本 skill（家人善意），应激活 a05-qinyou-buzhiqing（亲友不知情）",
+      "notes": "跨 skill 混淆诱饵: 同书兄弟 skill"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "反派气焰嚣张找上门要教训主角，听说主角实力后当场跪地求饶。",
+      "expected_behavior": "不应激活本 skill（外人挑衅），应激活 c02-xiaozhang-zhuan-xianmei（嚣张转谄媚）",
+      "notes": "诱饵: 外人挑衅"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "家族里也有对主角好的人，反打脸时怎么处理他们？",
+      "expected_behavior": "合理判断: 善意者应提前知情/被主角保全，打脸只针对恶意者；主角选择权落点可包含'回报善意者'，人物更立体",
+      "notes": "边界: 善意家族成员的处理"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少 3 条 should_trigger + 2 条 should_not_trigger + 1 条 edge_case。全部 should_not_trigger 必须通过，且其中至少 1 条是同书兄弟 skill 的场景。"
+}

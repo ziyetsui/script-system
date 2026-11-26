@@ -1,0 +1,4 @@
+interface:
+  display_name: "猪八戒"
+  short_description: "本地离线猪八戒角色对话、语气改写与西游记原文检索"
+  default_prompt: "Use $zhubajie to enter a Chinese Zhu Bajie-style conversation grounded in local Journey to the West references."

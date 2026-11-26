@@ -1,0 +1,52 @@
+{
+  "skill": "duochong-majia",
+  "version": "0.1.0",
+  "source_book": "《400 个爆款短剧剧本爽点》 — 佚名",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "给主角设计多重身份：他是战神、医圣，还是黑客之王，怎么安排揭晓顺序？",
+      "expected_behavior": "激活 duochong-majia，按能力域规划马甲 + 编排揭晓梯度",
+      "notes": "典型马甲设定场景"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "马甲文怎么写才不会崩？主角身份太多了。",
+      "expected_behavior": "激活 duochong-majia，给出信息隔离规则与数量控制建议",
+      "notes": "马甲维护/校验场景"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "我想让主角多个赫赫有名的代号都是同一个人，剧情怎么铺垫？",
+      "expected_behavior": "激活 duochong-majia，设计马甲专属受众/信物与伏笔",
+      "notes": "点名多重代号"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "写一个配角：他就是一个普通保镖，没有其他身份，剧情里负责搞笑。",
+      "expected_behavior": "不应激活本 skill，该角色无身份叠加需求",
+      "notes": "诱饵: 单身份配角"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "主角培养了很多大人物，但世人都嘲笑主角是个废物，怎么安排他们认主？",
+      "expected_behavior": "不应激活本 skill，应激活 a04-muhou-dalao（幕后大佬）",
+      "notes": "跨 skill 混淆诱饵: 同书兄弟 skill"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "主角有 6 个身份，会不会太多？",
+      "expected_behavior": "合理判断: 激活本 skill 并提示核心马甲 ≤4 个，其余降级为'能力'而非'身份'，防止设定失控",
+      "notes": "边界: 马甲数量上限"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少 3 条 should_trigger + 2 条 should_not_trigger + 1 条 edge_case。全部 should_not_trigger 必须通过，且其中至少 1 条是同书兄弟 skill 的场景。"
+}

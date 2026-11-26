@@ -1,0 +1,52 @@
+{
+  "skill": "xitong-weizhuang",
+  "version": "0.1.0",
+  "source_book": "《400 个爆款短剧剧本爽点》 — 佚名",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "主角实力还弱，怎么用系统面板/伪装功能唬住来挑衅的对手？",
+      "expected_behavior": "激活 xitong-weizhuang，设计系统伪装功能 + 可兑现底牌 + 首次唬人展示",
+      "notes": "典型系统伪装场景"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "系统流里除了给真实力，还能给什么玩法？比如伪装。",
+      "expected_behavior": "激活 xitong-weizhuang，补充系统伪装类功能设计与边界",
+      "notes": "系统功能多样性"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "主角的假身份面板被人质疑了，怎么用真底牌圆场？",
+      "expected_behavior": "激活 xitong-weizhuang，设计穿帮/反穿帮冲突 + 真本事兜底",
+      "notes": "反穿帮冲突"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "主角的系统真给力，直接提升真实战力，他一路碾压。",
+      "expected_behavior": "不应激活本 skill（真实实力），应激活 b05-jinzhishou-ziyuan（金手指与资源碾压）",
+      "notes": "跨 skill 混淆诱饵: 同书兄弟 skill"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "主角没有系统，靠演技和放出的风声让对手误以为他很强，对手退兵。",
+      "expected_behavior": "不应激活本 skill（无系统载体），应激活 b04-xuzhang-shengshi（虚张声势）",
+      "notes": "诱饵: 纯心理误导"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "主角一直靠系统伪装，真实实力一直跟不上怎么办？",
+      "expected_behavior": "合理判断: 伪装必须有'成长终点'——安排真实实力追赶（升级/修炼/夺宝），否则穿帮是必然；或主动设计一次'公开摊牌+用真本事证明'的高潮",
+      "notes": "边界: 伪装的可持续性"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少 3 条 should_trigger + 2 条 should_not_trigger + 1 条 edge_case。全部 should_not_trigger 必须通过，且其中至少 1 条是同书兄弟 skill 的场景。"
+}

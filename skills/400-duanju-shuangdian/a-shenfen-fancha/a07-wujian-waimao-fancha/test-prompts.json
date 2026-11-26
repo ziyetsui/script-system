@@ -1,0 +1,52 @@
+{
+  "skill": "wujian-waimao-fancha",
+  "version": "0.1.0",
+  "source_book": "《400 个爆款短剧剧本爽点》 — 佚名",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "主角喝水用的破碗其实是失传圣物，怎么让识货的宗师认出来？",
+      "expected_behavior": "激活 wujian-waimao-fancha，设计识货者震惊 + 不识货者打脸",
+      "notes": "典型物件反差场景"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "主角一直被当丑八怪，其实真容惊艳，怎么写反转？",
+      "expected_behavior": "激活 wujian-waimao-fancha，按误认铺垫 + 真容惊艳设计",
+      "notes": "外貌反差场景"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "怎么用一件随身物件暗示主角身份不简单？",
+      "expected_behavior": "激活 wujian-waimao-fancha，用识货者反应为物件估值",
+      "notes": "身份信号设计"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "主角用一把破剑打赢了对方的神兵，战斗场面怎么写？",
+      "expected_behavior": "不应激活本 skill，这是战斗对抗，应激活 b02-po-bingqi-sheng-shenbing",
+      "notes": "诱饵: 战斗类场景"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "主角随手把珍贵丹药像糖豆一样送人，怎么显示他的资源实力？",
+      "expected_behavior": "不应激活本 skill（单看'送宝物'动作），应激活 b05-jinzhishou-ziyuan（金手指与资源碾压）",
+      "notes": "跨 skill 混淆诱饵: 同书兄弟 skill"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "识货者认出宝物后，不识货的配角还在嘲笑，会不会太假？",
+      "expected_behavior": "合理判断: 需给不识货者合理解释（没受过训练/没见过世面/被蒙蔽），若他明显有能力识别仍嘲笑则属强行降智，应改写",
+      "notes": "边界: 不识货者的合理性"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少 3 条 should_trigger + 2 条 should_not_trigger + 1 条 edge_case。全部 should_not_trigger 必须通过，且其中至少 1 条是同书兄弟 skill 的场景。"
+}

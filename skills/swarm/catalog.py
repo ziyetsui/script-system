@@ -1,0 +1,1 @@
+../../tools/skill_catalog.py

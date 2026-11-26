@@ -1,0 +1,4 @@
+interface:
+  display_name: "托塔李天王"
+  short_description: "本地离线托塔李天王角色对话统兵军令西游记原文章回检索辅助工具"
+  default_prompt: "Use $litianwang to enter a Chinese Tota Li Tianwang-style conversation grounded in local Journey to the West references."

@@ -1,0 +1,52 @@
+{
+  "skill": "xuzhang-shengshi",
+  "version": "0.1.0",
+  "source_book": "《400 个爆款短剧剧本爽点》 — 佚名",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "主角实力不够硬拼，怎么用虚张声势吓退来找麻烦的对手？",
+      "expected_behavior": "激活 xuzhang-shengshi，设计可信锚点 + 简短误导 + 见好就收",
+      "notes": "典型虚张声势场景"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "写一个兵不血刃的桥段：主角用几句话让强敌主动退兵。",
+      "expected_behavior": "激活 xuzhang-shengshi，用模棱两可的强者信号让对手自行脑补",
+      "notes": "不战而屈人之兵"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "怎么让对手高估主角的实力？主角其实没那么强。",
+      "expected_behavior": "激活 xuzhang-shengshi，给出假象锚点设计 + 穿帮风险控制",
+      "notes": "误导对手高估"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "配角看到主角打了个哈欠，疯狂脑补主角是在布局惊天大计，越想越怕。",
+      "expected_behavior": "不应激活本 skill（主角未主动误导），应激活 d01-dihua-liu（迪化流）",
+      "notes": "跨 skill 混淆诱饵: 同书兄弟 skill"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "主角实力碾压，直接出手把对手打趴下，全场震惊。",
+      "expected_behavior": "不应激活本 skill，真实实力碾压应归 b01/b07",
+      "notes": "诱饵: 真实碾压"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "虚张声势被对手识破了怎么办？",
+      "expected_behavior": "合理判断: 需提前备后手（真实底牌兜底/撤退路线/借势转移）；被揭穿后不应硬撑，且该招对同一对手失效",
+      "notes": "边界: 穿帮处理"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少 3 条 should_trigger + 2 条 should_not_trigger + 1 条 edge_case。全部 should_not_trigger 必须通过，且其中至少 1 条是同书兄弟 skill 的场景。"
+}

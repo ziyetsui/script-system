@@ -1,0 +1,16 @@
+{
+  "skill_name": "style-xiyouji",
+  "style_name": "西游记风格",
+  "hf_model": "stylellm/XiYouJi-6b",
+  "model_dir": null,
+  "book_titles": [
+    "西游记"
+  ],
+  "examples_count": 2,
+  "distill_method": "StyleLLM",
+  "generated_at": "2026-07-09T01:31:43.719093+00:00",
+  "style_key": "xiyouji",
+  "book_ids": [
+    4
+  ]
+}

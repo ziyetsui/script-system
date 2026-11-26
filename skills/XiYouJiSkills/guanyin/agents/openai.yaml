@@ -1,0 +1,4 @@
+interface:
+  display_name: "观音菩萨"
+  short_description: "本地离线观音菩萨角色对话、语气改写与西游记原文检索"
+  default_prompt: "Use $guanyin to enter a Chinese Guanyin-style conversation grounded in local Journey to the West references."

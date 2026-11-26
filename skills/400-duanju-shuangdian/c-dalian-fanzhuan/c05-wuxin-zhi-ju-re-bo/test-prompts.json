@@ -1,0 +1,52 @@
+{
+  "skill": "wuxin-zhi-ju-re-bo",
+  "version": "0.1.0",
+  "source_book": "《400 个爆款短剧剧本爽点》 — 佚名",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "主角随手帮了个人，结果被传成'大佬出手'引发各方站队，怎么写这场风波？",
+      "expected_behavior": "激活 wuxin-zhi-ju-re-bo，按误读土壤 → 滚雪球 → 收场设计",
+      "notes": "典型无心之举引风波"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "主角随口一句话被过度解读，怎么让误会引发连锁反应？",
+      "expected_behavior": "激活 wuxin-zhi-ju-re-bo，设计传言扩散 + 多方站队 + 冲突升级",
+      "notes": "一句话风波"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "剧本需要主角'被动卷入'冲突的剧情，怎么设计？",
+      "expected_behavior": "激活 wuxin-zhi-ju-re-bo，用误读作为低成本冲突引擎",
+      "notes": "被动卷入引擎"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "配角看到主角打了个哈欠，疯狂脑补他在布局惊天大计，越想越敬畏。",
+      "expected_behavior": "不应激活本 skill（敬畏向脑补），应激活 d01-dihua-liu（迪化流）",
+      "notes": "跨 skill 混淆诱饵: 同书兄弟 skill"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "主角故意散布假消息让对手高估他，兵不血刃退敌。",
+      "expected_behavior": "不应激活本 skill（主角主动布局），应激活 b04-xuzhang-shengshi（虚张声势）",
+      "notes": "诱饵: 主动误导"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "误读风波被澄清后，主角要不要惩罚误读的配角？",
+      "expected_behavior": "合理判断: 按剧风定——喜剧向可轻放（误会解除皆大欢喜），解气向让造谣者承担后果；保留'教训但不赶尽杀绝'的余地更立体",
+      "notes": "边界: 澄清后的处置"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少 3 条 should_trigger + 2 条 should_not_trigger + 1 条 edge_case。全部 should_not_trigger 必须通过，且其中至少 1 条是同书兄弟 skill 的场景。"
+}

@@ -1,0 +1,16 @@
+{
+  "skill_name": "style-hongloumeng",
+  "style_name": "红楼梦风格",
+  "hf_model": "stylellm/HongLouMeng-6b",
+  "model_dir": null,
+  "book_titles": [
+    "红楼梦"
+  ],
+  "examples_count": 2,
+  "distill_method": "StyleLLM",
+  "generated_at": "2026-07-09T01:31:43.687163+00:00",
+  "style_key": "hongloumeng",
+  "book_ids": [
+    1
+  ]
+}

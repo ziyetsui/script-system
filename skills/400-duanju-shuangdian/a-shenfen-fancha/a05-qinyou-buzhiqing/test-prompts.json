@@ -1,0 +1,52 @@
+{
+  "skill": "qinyou-buzhiqing",
+  "version": "0.1.0",
+  "source_book": "《400 个爆款短剧剧本爽点》 — 佚名",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "主角在外面是战神，回家却被父母催婚嫌弃没出息，怎么把这条线写好？",
+      "expected_behavior": "激活 qinyou-buzhiqing，设计双视角反差 + 情感揭晓",
+      "notes": "典型亲友不知情场景"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "全家人都不知道主角是首富，我想写他回家被看不起的桥段。",
+      "expected_behavior": "激活 qinyou-buzhiqing，生成家庭轻视 + 外部光环对照戏",
+      "notes": "点名家里不知道"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "怎么设计'家人受欺负，主角被迫亮身份保护家人'的揭晓场面？",
+      "expected_behavior": "激活 qinyou-buzhiqing，按'保护→揭晓→震惊→愧疚→释放'设计",
+      "notes": "揭晓触发器设计"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "主角没有家人，是孤狼设定，全剧没有亲情线。",
+      "expected_behavior": "不应激活本 skill，无亲友视角可写",
+      "notes": "诱饵: 无家庭设定"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "主角家族的人一直嘲讽贬低他、把他当弃子，我要写主角当众反打脸让家族颜面扫地。",
+      "expected_behavior": "不应激活本 skill，应激活 c01-jiazufan-dalian（家族嘲讽反打脸）",
+      "notes": "跨 skill 混淆诱饵: 同书兄弟 skill"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "家人已经看到主角很厉害了，但剧情还要继续隐瞒，怎么办？",
+      "expected_behavior": "合理判断: 提示信息隔离一旦打破必须处理后果——要么让家人知情并加入'守护秘密'同盟，要么换隐瞒对象（其他亲友），不应强行维持",
+      "notes": "边界: 信息隔离的可持续性"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少 3 条 should_trigger + 2 条 should_not_trigger + 1 条 edge_case。全部 should_not_trigger 必须通过，且其中至少 1 条是同书兄弟 skill 的场景。"
+}

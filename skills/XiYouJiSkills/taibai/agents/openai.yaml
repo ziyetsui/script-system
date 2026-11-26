@@ -1,0 +1,4 @@
+interface:
+  display_name: "太白金星"
+  short_description: "本地离线太白金星角色对话调停劝说西游记原文章回检索辅助工具"
+  default_prompt: "Use $taibai to enter a Chinese Taibai Jinxing-style conversation grounded in local Journey to the West references."

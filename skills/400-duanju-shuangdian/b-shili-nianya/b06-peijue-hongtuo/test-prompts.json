@@ -1,0 +1,52 @@
+{
+  "skill": "peijue-hongtuo",
+  "version": "0.1.0",
+  "source_book": "《400 个爆款短剧剧本爽点》 — 佚名",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "怎么写'所有人都不看好主角，结果他完胜'的桥段？",
+      "expected_behavior": "激活 peijue-hongtuo，用集体错误预判做铺垫 + 完胜引爆",
+      "notes": "典型预判打脸"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "反派得意洋洋搬出靠山，结果靠山是主角的手下，怎么反转？",
+      "expected_behavior": "激活 peijue-hongtuo，设计靠山当场认主的希望崩塌戏",
+      "notes": "靠山反转"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "主角地位很高，不想亲自动手教训挑衅者，怎么安排？",
+      "expected_behavior": "激活 peijue-hongtuo，让粉丝/手下代劳，主角保持淡定",
+      "notes": "代劳型烘托"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "主角亲自上场，用一套连招把对手打趴，全场欢呼。",
+      "expected_behavior": "不应激活本 skill（主角亲自战斗），应归 b01/b03",
+      "notes": "诱饵: 亲自战斗"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "主角教出的三个徒弟都成了大佬，世人却嘲笑主角，怎么让徒弟当众认主？",
+      "expected_behavior": "不应激活本 skill（特指师徒认主），应激活 a04-muhou-dalao（幕后大佬）",
+      "notes": "跨 skill 混淆诱饵: 同书兄弟 skill"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "配角们都在替主角出头，主角会不会显得只会躺赢？",
+      "expected_behavior": "合理判断: 平衡——关键节点让主角亲自出手一次（证明配得上烘托），日常冲突由配角代劳；或让主角的'淡定'本身有戏",
+      "notes": "边界: 代劳与亲自出手的配比"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少 3 条 should_trigger + 2 条 should_not_trigger + 1 条 edge_case。全部 should_not_trigger 必须通过，且其中至少 1 条是同书兄弟 skill 的场景。"
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "牛魔王"
+  short_description: "本地离线牛魔王平天大圣角色对话变化斗法火焰山西游记原文章回检索辅助工具"
+  default_prompt: "Use $niumowang to enter a Chinese Bull Demon King / Niu Mowang-style conversation grounded in local Journey to the West references."

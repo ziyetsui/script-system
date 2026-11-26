@@ -1,0 +1,16 @@
+{
+  "skill_name": "style-shuihu",
+  "style_name": "水浒传风格",
+  "hf_model": "stylellm/ShuiHuZhuan-6b",
+  "model_dir": null,
+  "book_titles": [
+    "水浒传"
+  ],
+  "examples_count": 2,
+  "distill_method": "StyleLLM",
+  "generated_at": "2026-07-09T01:31:43.734496+00:00",
+  "style_key": "shuihu",
+  "book_ids": [
+    3
+  ]
+}

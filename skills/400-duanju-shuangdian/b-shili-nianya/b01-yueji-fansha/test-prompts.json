@@ -1,0 +1,52 @@
+{
+  "skill": "yueji-fansha",
+  "version": "0.1.0",
+  "source_book": "《400 个爆款短剧剧本爽点》 — 佚名",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "写一场战斗：主角被高一个大境界的对手逼入绝境，怎么安排极限反杀？",
+      "expected_behavior": "激活 yueji-fansha，按差距→底牌伏笔→绝境→回收翻盘设计",
+      "notes": "典型越级反杀场景"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "主角被围攻至死，我想写他死后复活震撼全场，怎么铺垫才不假？",
+      "expected_behavior": "激活 yueji-fansha，强调复活底牌前置伏笔与回归时机",
+      "notes": "死后复活变体"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "怎么让'必败之局'的反杀不显得机械降神？",
+      "expected_behavior": "激活 yueji-fansha，检查底牌回收与预期差结构",
+      "notes": "反杀合理性校验"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "主角实力碾压全场，轻松打败所有对手，没有绝境没有反转。",
+      "expected_behavior": "不应激活本 skill，无预期差战斗属 b07 举重若轻/碾压戏",
+      "notes": "诱饵: 无反转碾压"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "主角故意放出假消息让对手以为他很弱，对手吓得直接退兵了。",
+      "expected_behavior": "不应激活本 skill，应激活 b04-xuzhang-shengshi（虚张声势）",
+      "notes": "跨 skill 混淆诱饵: 同书兄弟 skill"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "每场战斗都让主角越级反杀可以吗？",
+      "expected_behavior": "合理判断: 提示审美疲劳——关键反杀全剧 1–2 次，日常战斗用碾压/轻松赢形成节奏梯度",
+      "notes": "边界: 反杀频率"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少 3 条 should_trigger + 2 条 should_not_trigger + 1 条 edge_case。全部 should_not_trigger 必须通过，且其中至少 1 条是同书兄弟 skill 的场景。"
+}

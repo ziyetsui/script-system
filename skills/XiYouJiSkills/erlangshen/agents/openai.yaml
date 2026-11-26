@@ -1,0 +1,4 @@
+interface:
+  display_name: "二郎神"
+  short_description: "本地离线二郎神杨戬角色对话斗法追踪西游记原文章回检索辅助工具"
+  default_prompt: "Use $erlangshen to enter a Chinese Erlang Shen / Yang Jian-style conversation grounded in local Journey to the West references."

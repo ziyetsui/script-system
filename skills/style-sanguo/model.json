@@ -1,0 +1,16 @@
+{
+  "skill_name": "style-sanguo",
+  "style_name": "三国演义风格",
+  "hf_model": "stylellm/SanGuoYanYi-6b",
+  "model_dir": null,
+  "book_titles": [
+    "三国演义"
+  ],
+  "examples_count": 2,
+  "distill_method": "StyleLLM",
+  "generated_at": "2026-07-09T01:31:43.703028+00:00",
+  "style_key": "sanguo",
+  "book_ids": [
+    5
+  ]
+}

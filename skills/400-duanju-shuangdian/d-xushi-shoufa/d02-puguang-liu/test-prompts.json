@@ -1,0 +1,52 @@
+{
+  "skill": "puguang-liu",
+  "version": "0.1.0",
+  "source_book": "《400 个爆款短剧剧本爽点》 — 佚名",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "写一个曝光流桥段：主角低调扫大街，某天默默平息了一场暴乱，全城震动。",
+      "expected_behavior": "激活 puguang-liu，按低调姿态 → 轰动结果 → 事后发现 → 不在意设计",
+      "notes": "典型曝光流场景"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "剧本打脸戏太多了，想要不羞辱人也很爽的桥段，怎么写？",
+      "expected_behavior": "激活 puguang-liu，用低姿态+大结果的无声碾压替代打脸流",
+      "notes": "爽点多样性"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "主角匿名做了一件轰动的大事，怎么安排众人'事后才发现是他'的反差？",
+      "expected_behavior": "激活 puguang-liu，设计事后发现 + 主角不在意",
+      "notes": "事后发现反差"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "富二代在主角面前炫富，主角拿出更高层次的资本当场碾压让他社死。",
+      "expected_behavior": "不应激活本 skill（打击他人），应激活 c03-xuanfu-bei-nianya（炫富被碾压）",
+      "notes": "跨 skill 混淆诱饵: 同书兄弟 skill"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "全城名医都治不好的病，主角随手治好，突出'别人难他容易'的反差。",
+      "expected_behavior": "不应激活本 skill（效率反差），应激活 b07-juzhong-ruoqing（举重若轻）",
+      "notes": "诱饵: 效率反差"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "曝光流的主角要不要在结尾亮明身份？",
+      "expected_behavior": "合理判断: 按剧情需要——半揭晓（部分人知道）可持续低调人设，全揭晓（全场震惊）适合单集高潮；保持'不主动炫耀'的姿态即可",
+      "notes": "边界: 身份揭晓程度"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少 3 条 should_trigger + 2 条 should_not_trigger + 1 条 edge_case。全部 should_not_trigger 必须通过，且其中至少 1 条是同书兄弟 skill 的场景。"
+}

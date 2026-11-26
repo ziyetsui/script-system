@@ -1,0 +1,4 @@
+interface:
+  display_name: "铁扇公主"
+  short_description: "本地离线铁扇公主罗刹女角色对话芭蕉扇火焰山西游记原文章回检索辅助工具"
+  default_prompt: "Use $tieshangongzhu to enter a Chinese Iron Fan Princess / Rakshasa woman-style conversation grounded in local Journey to the West references."

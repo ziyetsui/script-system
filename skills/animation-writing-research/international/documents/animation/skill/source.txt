@@ -1,0 +1,365 @@
+---
+name: animation
+description: Generate self-contained, single-file HTML knowledge animations using a structured Shot-List methodology. Best for explaining mathematical theorems, physics laws, algorithms, historical events, and abstract concepts as fully autoplay video-like animations with bilingual subtitles. Unlike one-shot prompt approaches, this skill enforces a Storyboard → Visual Grammar → Quality Gates pipeline.
+---
+
+# Knowledge Animation Generator
+
+**A storyboard-driven methodology for producing knowledge-explainer animations as a single self-contained HTML file.**
+
+This skill replaces the common "one paragraph prompt → hope the model produces something pretty" approach with a structured pipeline: **Subject Analysis → Shot List → Visual Grammar → Quality Gates**.
+
+---
+
+## Core Philosophy
+
+> A knowledge animation is not a "pretty animated webpage". It is a **silent film**: the viewer must understand the concept *without* needing to scrub, pause, or interact. Every frame must do narrative work.
+
+Three non-negotiable principles:
+
+1. **Cognitive Pacing over Visual Density** — pause longer than feels comfortable. The viewer needs reading time, not decoration time.
+2. **One Idea Per Shot** — each shot delivers exactly one cognitive unit. Multiple ideas → multiple shots.
+3. **Spatial Memory** — once an element appears in a position, it stays in that position (or animates *to* its next position) so the viewer's spatial memory isn't reset.
+
+---
+
+## The Pipeline
+
+```
+USER INPUT (concept)
+    │
+    ▼
+┌─────────────────────────┐
+│ STEP 0: Depth Tiering   │  → Classify as Tier A / B / C (controls structure & ending)
+└─────────────────────────┘
+    │
+    ▼
+┌─────────────────────────┐
+│ STEP 1: Subject Analysis│  → Pick a paradigm (math/physics/algo/history/concept)
+└─────────────────────────┘
+    │
+    ▼
+┌─────────────────────────┐
+│ STEP 2: Shot List       │  → Decompose into 5–9 shots with explicit duration & purpose
+└─────────────────────────┘
+    │
+    ▼
+┌─────────────────────────┐
+│ STEP 3: Visual Grammar  │  → Apply enter/transition/emphasis patterns from the library
+└─────────────────────────┘
+    │
+    ▼
+┌─────────────────────────┐
+│ STEP 4: Quality Gates   │  → Run the 7-point checklist before delivery
+└─────────────────────────┘
+    │
+    ▼
+┌─────────────────────────┐
+│ STEP 5: Further Reading │  → ONLY for Tier B/C — append static reading shelf
+└─────────────────────────┘
+    │
+    ▼
+SINGLE SELF-CONTAINED HTML FILE
+```
+
+---
+
+## STEP 1 — Subject Analysis
+
+Before writing any code, classify the concept into **one of five paradigms**. Each paradigm has its own pacing, visual vocabulary, and structural template.
+
+| Paradigm | Triggers | Reference |
+|---|---|---|
+| **Mathematical** | Theorems, proofs, formulas, geometric properties | [paradigms/mathematical.md](paradigms/mathematical.md) |
+| **Physical** | Laws of nature, forces, motion, thermodynamics | [paradigms/physical.md](paradigms/physical.md) |
+| **Algorithmic** | Data structures, sorting, searching, traversal | [paradigms/algorithmic.md](paradigms/algorithmic.md) |
+| **Historical** | Events, causal chains, timelines, evolutions | [paradigms/historical.md](paradigms/historical.md) |
+| **Conceptual** | Abstract ideas (entropy, affordance, capitalism…) | [paradigms/conceptual.md](paradigms/conceptual.md) |
+
+**Critical**: do not start coding until you have committed to one paradigm. A "concept animation" written as a "math animation" will fail.
+
+---
+
+## STEP 2 — Shot List
+
+Every animation **must** be expressed as a Shot List before code is written. The Shot List is a structured table; do **not** write it as prose.
+
+### Shot List Schema
+
+| Field | Required | Description |
+|---|---|---|
+| `id` | yes | S1, S2, S3… |
+| `start` | yes | Start time in seconds |
+| `dur` | yes | Duration in seconds |
+| `purpose` | yes | One of: hook / setup / develop / climax / verify / resolve |
+| `visual` | yes | What is on screen (≤ 15 words) |
+| `subtitle_cn` | yes | Chinese narration (≤ 30 chars) |
+| `subtitle_en` | yes | English narration (≤ 60 chars) |
+| `enter` | optional | Enter pattern from Visual Grammar |
+| `exit` | optional | Exit pattern from Visual Grammar |
+
+### Pacing Rules
+
+- **Total duration**: 25–45 seconds. Below 20s feels rushed; above 50s loses attention.
+- **Hook shot** (S1): 2–3s. Pose the question, do not answer it.
+- **Climax shot**: at 60–75% of total duration, NOT at the end.
+- **Resolve shot**: 3–5s of stillness. Do not animate during the final subtitle.
+- **Subtitle dwell time**: minimum 1.8 seconds per subtitle. Reading speed is the bottleneck, not animation speed.
+
+### Example Shot List (Pythagorean Theorem)
+
+```
+| id | start | dur | purpose  | visual                       | subtitle_cn          |
+|----|-------|-----|----------|------------------------------|----------------------|
+| S1 |  0.0  | 2.5 | hook     | a right triangle alone       | 直角三角形里藏着什么？|
+| S2 |  2.5  | 4.0 | setup    | label sides a, b, c          | 我们标记三条边         |
+| S3 |  6.5  | 5.0 | develop  | grow squares on each side    | 在每条边上长出正方形    |
+| S4 | 11.5  | 6.0 | climax   | tile a²+b² into c²           | 两个小正方形恰好填满大的|
+| S5 | 17.5  | 4.0 | verify   | show formula a²+b²=c²        | a² + b² = c²         |
+| S6 | 21.5  | 3.5 | resolve  | hold formula, fade decoration| 这就是勾股定理         |
+```
+
+---
+
+## STEP 3 — Visual Grammar
+
+Reusable enter / transition / emphasis patterns. Pick from the library, do not improvise:
+
+| Category | File |
+|---|---|
+| **Enter patterns** (how elements appear) | [patterns/enter.md](patterns/enter.md) |
+| **Transition patterns** (how shots connect) | [patterns/transition.md](patterns/transition.md) |
+| **Emphasis patterns** (how to direct attention) | [patterns/emphasis.md](patterns/emphasis.md) |
+| **Subtitle system** (bilingual rendering rules) | [patterns/subtitle.md](patterns/subtitle.md) |
+
+### The Layer Stack (mandatory)
+
+Every animation has exactly five z-layers. Do not invent new ones:
+
+```
+z=50  Subtitle layer       (always on top, always readable)
+z=40  Annotation layer     (labels, arrows, callouts)
+z=30  Subject layer        (the thing being explained)
+z=20  Stage layer          (axes, grids, boards)
+z=10  Background layer     (gradients, decorative shapes)
+```
+
+**Rule**: subtitles never overlap subject. If the subject grows toward the bottom, push subtitles to the top instead.
+
+---
+
+## STEP 4 — Quality Gates
+
+Before delivering, run the 7-point checklist: [quality-gates.md](quality-gates.md)
+
+A summary:
+
+1. **No clipping** — no element exits the 1920×1080 viewport
+2. **No overlap** — subtitles never cover the subject
+3. **Readable dwell** — every subtitle ≥ 1.8s, every formula ≥ 2.5s
+4. **Spatial continuity** — elements that persist across shots stay in the same position
+5. **Loop-safe** — animation either ends cleanly or loops without a visible jump
+6. **Self-contained** — no external dependencies except optional CDN fonts
+7. **Bilingual parity** — every CN subtitle has an EN counterpart, both visible
+
+---
+
+## Output Contract
+
+The deliverable is **always**:
+
+- A **single** `.html` file
+- Inline CSS (no external stylesheets except optional Google Fonts)
+- Inline JavaScript (no external libraries unless explicitly justified — GSAP, anime.js, three.js are acceptable via CDN)
+- Designed for a **1920×1080** viewport, scaled to fill the browser
+- **Autoplay** — starts immediately on load, no click required
+- **No interactive controls** — no buttons, no scrubber, no settings
+
+### Skeleton Template
+
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ Concept Name }}</title>
+  <style>
+    /* === LAYER STACK === */
+    .layer-bg { z-index: 10; }
+    .layer-stage { z-index: 20; }
+    .layer-subject { z-index: 30; }
+    .layer-annotation { z-index: 40; }
+    .layer-subtitle { z-index: 50; }
+    /* === SHOT TIMING (CSS variables driven) === */
+    :root {
+      --shot-1-start: 0s;
+      --shot-1-dur: 2.5s;
+      /* ... */
+    }
+  </style>
+</head>
+<body>
+  <div id="stage">
+    <div class="layer-bg"></div>
+    <div class="layer-stage"></div>
+    <div class="layer-subject"></div>
+    <div class="layer-annotation"></div>
+    <div class="layer-subtitle">
+      <div class="sub-cn"></div>
+      <div class="sub-en"></div>
+    </div>
+  </div>
+  <script>
+    /* === SHOT LIST === */
+    const shots = [
+      { id: 'S1', start: 0.0, dur: 2.5, cn: '...', en: '...', render: t => { /* ... */ } },
+      /* ... */
+    ];
+    /* === MASTER CLOCK === */
+    function tick(now) { /* dispatch to current shot's render */ requestAnimationFrame(tick); }
+    requestAnimationFrame(tick);
+  </script>
+</body>
+</html>
+```
+
+---
+
+## What This Skill Is NOT
+
+To stay grounded — this skill explicitly does not try to be:
+
+- A web service or API wrapper
+- A multi-turn conversational refinement system
+- A model-specific tool (works with any model that can write HTML)
+- A "make it pretty" prompt — prettiness is a *consequence* of the pipeline, not the goal
+
+The deliverable is a methodology and a structured file output. The aesthetic improvement comes from **constraint discipline**, not from prompt magic.
+
+---
+
+## When To Use This Skill
+
+Trigger when the user asks for any of:
+
+- "做一个 X 的动画 / 教学动画 / 科普动画"
+- "把 X 概念可视化 / 动起来"
+- "explain X with an animation"
+- "generate a video-like HTML for X"
+- Any request to turn a knowledge point into a self-playing visualization
+
+Do **not** trigger for:
+
+- Static infographics → use `infographic` skill
+- Architecture diagrams → use `architecture` skill
+- Interactive demos / playgrounds (those need controls)
+- Real video generation (mp4/webm output)
+
+---
+
+## Depth Strategy — Simple vs. Complex Topics
+
+A knowledge animation should match its topic's intrinsic complexity. **Do not flatten everything to the same shape.**
+
+Before writing the Shot List, classify the topic:
+
+### Tier A — Provable in 30 seconds
+
+The concept has a **finite, visual proof** that fits within the animation budget.
+
+Examples: Pythagorean theorem, sum of geometric series, area of a circle (via slicing), AM-GM inequality (n=2), parity invariants.
+
+**Mandatory**: include a `PROVE` shot. Not just "verify with examples", but a genuine visual proof — typically a dissection, rearrangement, or bijection argument.
+
+```
+HOOK → SETUP → DEVELOP → PROVE → RESOLVE
+                          ↑
+                    the centerpiece
+```
+
+The proof itself becomes the climax. The viewer should leave understanding *why* the theorem is true, not just *that* it is true.
+
+### Tier B — Demonstrable but not provable in 30 seconds
+
+The concept can be **shown** but a full proof requires more than the animation can carry.
+
+Examples: Euler's polyhedron formula (proof needs induction on edges), central limit theorem, Gödel incompleteness, conservation of energy, Big-O complexity.
+
+**Strategy**: skip rigorous proof. Show 3–4 instances that establish the pattern, then **append a Further Reading shelf** at the very end of the HTML (outside the animated stage). See [further-reading.md](further-reading.md) for the format.
+
+```
+HOOK → SETUP → DEVELOP → INSTANCES → RESOLVE
+                                         │
+                                         ▼
+                              [Further Reading shelf — static, after animation ends]
+```
+
+### Tier C — Requires a worldview, not a frame
+
+The concept resists single-animation treatment because it has no clean visual reduction.
+
+Examples: emergence, free will, Hegelian dialectic, monetary theory, postmodernism.
+
+**Strategy**: do not animate this in isolation. Either:
+- Pick **one specific facet** and animate that (Tier A or B), explicitly framing it as "one slice of a larger idea", OR
+- Reject the request and recommend a different format (essay, infographic).
+
+### Decision Tree
+
+```
+Is there a finite visual proof under 30s?
+├─ YES → Tier A: include a PROVE shot
+└─ NO  → Can it be shown via 3+ instances?
+         ├─ YES → Tier B: instances + Further Reading shelf
+         └─ NO  → Tier C: pick one facet OR decline
+```
+
+State the tier explicitly in your output before writing the Shot List.
+
+---
+
+## Quick Start (Tier A example)
+
+```
+USER: 做一个勾股定理的动画
+
+STEP 0 — Depth Tier: A (provable in 30s via dissection)
+STEP 1 — Paradigm: Mathematical
+STEP 2 — Shot List:
+  S1 (0–2.5s)  hook    | a tilted right triangle, no labels        | 直角三角形里藏着什么？
+  S2 (2.5–6s) setup    | label legs a, b and hypotenuse c          | 两条直角边 a、b，斜边 c
+  S3 (6–10s)  develop  | grow squares on each of the three sides   | 每条边长出一个正方形
+  S4 (10–18s) PROVE    | dissect the two small squares, slide      | 把 a² 和 b² 切开，重新拼装
+                       | the pieces to tile the c² square exactly  | 恰好填满 c² — 没有缝隙，没有重叠
+  S5 (18–22s) verify   | formula a² + b² = c² appears              | a² + b² = c²
+  S6 (22–26s) resolve  | hold formula, fade decoration             | 这就是勾股定理
+STEP 3 — Visual Grammar: P3 Draw (S1-S2), P5 Zoom (S3), T3 Morph + E6 Spotlight (S4 climax), E7 Underline (S5)
+STEP 4 — Quality Gates: ✓ all
+```
+
+The proof in S4 is the centerpiece — viewer sees *why*, not just *what*.
+
+## Quick Start (Tier B example)
+
+```
+USER: 做一个中心极限定理的动画
+
+STEP 0 — Depth Tier: B (proof requires moment generating functions, beyond budget)
+STEP 1 — Paradigm: Mathematical / Conceptual hybrid (lean Conceptual)
+STEP 2 — Shot List:
+  S1 (0–3s)  hook       | a single skewed distribution                | 这个分布很奇怪，不对称
+  S2 (3–8s)  develop    | sample n=2, plot mean — slightly less skew  | 取 2 个样本，算平均值
+  S3 (8–14s) develop    | n=10, distribution looks more bell-like     | 取 10 个，开始像钟形了
+  S4 (14–20s) climax    | n=100, indistinguishable from normal curve  | 取 100 个 — 几乎是正态分布
+  S5 (20–24s) generalize| works for any starting distribution         | 不管起点什么形状，结果都一样
+  S6 (24–28s) resolve   | name the theorem                            | 这就是中心极限定理
+STEP 3 — Visual Grammar: P4 Count Up for n, T1 Hold-and-Add throughout
+STEP 4 — Quality Gates: ✓ all
+STEP 5 — Further Reading shelf (static, after animation):
+  • [书籍] All of Statistics, Wasserman, ch. 5
+  • [视频] 3Blue1Brown — But what is the Central Limit Theorem?
+  • [论文] Lyapunov's original 1901 proof (historical)
+  • [互动] Seeing Theory (Brown University) — CLT chapter
+```
+
+Then write the HTML. Pipeline first, code second.

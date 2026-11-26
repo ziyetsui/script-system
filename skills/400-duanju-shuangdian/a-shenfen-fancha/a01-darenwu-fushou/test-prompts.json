@@ -1,0 +1,52 @@
+{
+  "skill": "darenwu-fushou",
+  "version": "0.1.0",
+  "source_book": "《400 个爆款短剧剧本爽点》 — 佚名",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "帮我写一个开场：主角是公司保洁，但全城最强的武道大师见到他都要鞠躬，怎么铺垫这个反差？",
+      "expected_behavior": "激活 darenwu-fushou，设计权威者当众反常恭敬 + 旁观者延迟反应的桥段",
+      "notes": "典型'大人物俯首'生成场景"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "怎么用不直说的方式让读者知道主角是隐藏大佬？",
+      "expected_behavior": "激活 darenwu-fushou，用第三方权威者的恭敬动作替代旁白介绍",
+      "notes": "侧面暗示地位的语言信号"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "我想写'扮猪吃虎'，需要大佬对主角毕恭毕敬的桥段模板。",
+      "expected_behavior": "激活 darenwu-fushou，按 E 段五步生成桥段",
+      "notes": "明确点名扮猪吃虎/大人物俯首"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "主角真实身份已经向所有人公开了，现在写他接管公司，董事们开会讨论方案。",
+      "expected_behavior": "不应激活本 skill，因为身份已公开、无反差可制造",
+      "notes": "诱饵: 无反差场景"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "写一个桥段：反派气焰嚣张地找上门要打主角，结果听说主角实力后立刻跪地求饶。",
+      "expected_behavior": "不应激活本 skill，应激活 c02-xiaozhang-zhuan-xianmei（嚣张转谄媚）",
+      "notes": "跨 skill 混淆诱饵: 同书兄弟 skill"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "权威者态度恭敬但主角此刻还没亮身份，这段戏写多长合适？",
+      "expected_behavior": "合理判断: 激活本 skill 但提示'恭敬瞬间应短而刺眼，不宜拖长'，作为悬念钩子而非主体",
+      "notes": "边界: 恭敬桥段的篇幅控制"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少 3 条 should_trigger + 2 条 should_not_trigger + 1 条 edge_case。全部 should_not_trigger 必须通过，且其中至少 1 条是同书兄弟 skill 的场景。"
+}

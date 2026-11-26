@@ -1,0 +1,52 @@
+{
+  "skill": "shien-yu-guiren",
+  "version": "0.1.0",
+  "source_book": "《400 个爆款短剧剧本爽点》 — 佚名",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "主角救了一个被欺负的老头，后来发现老头是隐退的财阀掌门，怎么回收这条线？",
+      "expected_behavior": "激活 shien-yu-guiren，设计施恩→遗忘→危机→贵人现身闭环",
+      "notes": "典型施恩遇贵人场景"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "怎么给主角埋一条'无意帮了大人物'的人脉伏笔？",
+      "expected_behavior": "激活 shien-yu-guiren，按有代价施恩 + 异常细节伏笔 + 延后回报设计",
+      "notes": "人脉伏笔设计"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "我想写善有善报的剧情：主角帮了落魄姑娘，她其实是豪门千金。",
+      "expected_behavior": "激活 shien-yu-guiren，生成施恩与身份反转桥段",
+      "notes": "善有善报向"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "主角想攀附权贵，故意去接近某大佬的女儿，怎么演这出戏？",
+      "expected_behavior": "不应激活本 skill，这是功利攀附而非施恩，无善行反差",
+      "notes": "诱饵: 功利接近"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "主角在家被父母嫌弃没出息，但在外面是顶级战神，怎么写家庭反差？",
+      "expected_behavior": "不应激活本 skill，应激活 a05-qinyou-buzhiqing（亲友不知情）",
+      "notes": "跨 skill 混淆诱饵: 同书兄弟 skill"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "主角救的人到底该是普通贵人还是顶级大佬？",
+      "expected_behavior": "合理判断: 按剧情位置定——单元剧/单集爆点可选顶级大佬（惊喜大）；长线人脉可分级（先帮中层，后揭顶层），避免巧合泛滥",
+      "notes": "边界: 贵人层级与巧合密度"
+    }
+  ],
+  "minimum_pass_rate": 0.8,
+  "notes": "至少 3 条 should_trigger + 2 条 should_not_trigger + 1 条 edge_case。全部 should_not_trigger 必须通过，且其中至少 1 条是同书兄弟 skill 的场景。"
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "玉皇大帝"
+  short_description: "本地离线玉皇大帝角色对话语气改写西游记原文章回检索辅助工具"
+  default_prompt: "Use $yuhuang to enter a Chinese Jade Emperor-style conversation grounded in local Journey to the West references."
